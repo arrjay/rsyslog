@@ -1695,6 +1695,8 @@ getTimeReported(msg_t * const pM, enum tplFormatTypes eFmt)
 		return (pM->tTIMESTAMP.OffsetMode == '+')? "+" : "-";
 	case tplFmtOrdinal:
 		return daysInYear[getOrdinal(&pM->tTIMESTAMP)];
+	case tplFmtWeek:
+		return two_digits[getWeek(&pM->tTIMESTAMP)];
 	}
 	ENDfunc
 	return "INVALID eFmt OPTION!";
@@ -1808,6 +1810,8 @@ static inline char *getTimeGenerated(msg_t * const pM, enum tplFormatTypes eFmt)
 		return (pM->tRcvdAt.OffsetMode == '+')? "+" : "-";
 	case tplFmtOrdinal:
 		return daysInYear[getOrdinal(&pM->tRcvdAt)];
+	case tplFmtWeek:
+		return two_digits[getWeek(&pM->tRcvdAt)];
 	}
 	ENDfunc
 	return "INVALID eFmt OPTION!";
