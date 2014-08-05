@@ -94,6 +94,8 @@ static char *two_digits[100] = {
 	"80", "81", "82", "83", "84", "85", "86", "87", "88", "89",
 	"90", "91", "92", "93", "94", "95", "96", "97", "98", "99"};
 
+static char *wdayNames[7] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
 static struct {
 	uchar *pszName;
 	short lenName;
@@ -1600,6 +1602,8 @@ getTimeReported(msg_t * const pM, enum tplFormatTypes eFmt)
 			MsgUnlock(pM);
 		}
 		return(pM->pszTIMESTAMP_SecFrac);
+	case tplFmtWDayName:
+		return wdayNames[getWeekdayNbr(&pM->tTIMESTAMP)];
 	}
 	ENDfunc
 	return "INVALID eFmt OPTION!";
